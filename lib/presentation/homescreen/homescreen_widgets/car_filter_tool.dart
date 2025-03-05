@@ -4,7 +4,8 @@ import 'package:car_rental_task/core/constants/app_string.dart';
 import 'package:car_rental_task/core/constants/app_size.dart';
 import 'package:car_rental_task/data/car_data_manager/car_data_manager.dart';
 import 'package:car_rental_task/models/car_model_data.dart';
-import 'package:car_rental_task/presentation/homescreen/filteredcarsscreen/filteredcars_screen.dart';
+import 'package:car_rental_task/route/route.names.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +46,7 @@ class _ToolImageHomeState extends State<ToolImageHome> {
       }).toList();
 
       if (filteredCars.isEmpty) {
-        Navigator.pop(context);
+        Get.back;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: CustomText(
@@ -57,15 +58,7 @@ class _ToolImageHomeState extends State<ToolImageHome> {
         );
         return;
       }
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FilteredCarsScreen(
-            filtredCars: filteredCars,
-          ),
-        ),
-      );
+      Get.toNamed(RouteNames.filterCarsScreen,arguments: filteredCars);
     }
 
     void removeFilters() {
@@ -73,7 +66,7 @@ class _ToolImageHomeState extends State<ToolImageHome> {
       selectedCharacteristic = "";
       minPrice = AppSize.minimum;
       maxPrice = AppSize.maximum;
-      Navigator.pop(context);
+      Get.back;
     }
 
     return GestureDetector(

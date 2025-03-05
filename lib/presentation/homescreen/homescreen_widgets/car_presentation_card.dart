@@ -1,10 +1,10 @@
-import 'package:car_rental_task/core/constants/app_size.dart';
 import 'package:car_rental_task/core/utils/function_component.dart';
 import 'package:car_rental_task/models/car_model_data.dart';
 import 'package:car_rental_task/models/favorite_screen_list.dart';
-import 'package:car_rental_task/presentation/productscreen/product_screen.dart';
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
 
@@ -34,13 +34,7 @@ class _PopularCarsState extends State<PopularCars> {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    ProductScreen(carProduct: widget.carProduct),
-              ),
-            );
+            Get.toNamed(RouteNames.productScreen,arguments: widget.carProduct);
           },
           child: Container(
             width: double.infinity,

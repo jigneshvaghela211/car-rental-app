@@ -3,6 +3,7 @@ import 'package:car_rental_task/core/component/custom_text_field.dart';
 import 'package:car_rental_task/presentation/address_screen/widgets/address_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../core/constants/app_string.dart';
 import '../../core/theme/appcolors/app_colors.dart';
 import '../../core/component/round_button.dart';
@@ -54,12 +55,8 @@ class _AddressScreenState extends State<AddressScreen> {
             ),
             RoundButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PaymentMethodScreen(
-                            carProduct: widget.carProduct)));
-              },
+               Get.to(() => PaymentMethodScreen(carProduct: widget.carProduct));
+               },
               title: AppStrings.confirmAddress,
             ),
           ],

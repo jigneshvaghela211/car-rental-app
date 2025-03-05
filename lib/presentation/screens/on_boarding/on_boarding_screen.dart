@@ -1,12 +1,12 @@
 import 'package:car_rental_task/core/component/custom_text.dart';
 import 'package:car_rental_task/core/constants/app_string.dart';
 import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/constants/app_size.dart';
 import '../../../models/onboarding.data.model.dart';
-import '../auth/login/login_screen.dart';
 import 'widgets.onboarding/dot_indicator_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,8 +28,7 @@ class _PageviewScreenState extends State<PageviewScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      Get.toNamed(RouteNames.loginScreen);
     }
   }
 
@@ -59,7 +58,7 @@ class _PageviewScreenState extends State<PageviewScreen> {
             },
           ),
           Padding(
-            padding: EdgeInsets.only(top: 70.r,right: 35.w),
+            padding: EdgeInsets.only(top: 70.r,right: 45.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

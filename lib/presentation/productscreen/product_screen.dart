@@ -2,15 +2,15 @@ import 'package:car_rental_task/core/component/round_button.dart';
 import 'package:car_rental_task/core/constants/app_string.dart';
 import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
 import 'package:car_rental_task/data/address_model_data/address_screen_model_data.dart';
-
+import 'package:car_rental_task/presentation/productscreen/widget/product_screen_body.dart';
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:car_rental_task/models/car_model_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-
-import '../address_screen/address_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   final Car carProduct;
@@ -42,7 +42,7 @@ class _ProductScreenState extends State<ProductScreen> {
         backgroundColor: AppColors.white,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Get.back
         ),
         title: Text(
           widget.carProduct.carName,
@@ -58,205 +58,7 @@ class _ProductScreenState extends State<ProductScreen> {
         padding: EdgeInsets.only(bottom: 10.h),
         child: Stack(
           children: [
-            SingleChildScrollView(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Column(
-                      children: [
-                        Image.asset(widget.carProduct.carImage),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 16.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 110.h,
-                        width: 110.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.generalGrey,
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 10.w),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.offline_bolt_outlined,
-                                size: 25.sp,
-                                color: Colors.grey,
-                              ),
-                              SizedBox(height: 5.h),
-                              Text(AppStrings.engineO,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.black, fontSize: 12.sp)),
-                              SizedBox(height: 3.h),
-                              Text("${widget.carProduct.engine.toInt()} hp",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.bold)),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 110.h,
-                        width: 110.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.generalGrey,
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 10.w),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.display_settings,
-                                size: 25.sp,
-                                color: Colors.grey,
-                              ),
-                              SizedBox(height: 5.h),
-                              Text(AppStrings.transmission,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.black, fontSize: 12.sp)),
-                              SizedBox(height: 3.h),
-                              Text(widget.carProduct.characteristics,
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold)),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 110.h,
-                        width: 110.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.generalGrey,
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 10.w),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.local_gas_station,
-                                size: 25.sp,
-                                color: Colors.grey,
-                              ),
-                              SizedBox(height: 5.h),
-                              Text(AppStrings.fuelType,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.black, fontSize: 12.sp)),
-                              SizedBox(height: 3.h),
-                              Text(widget.carProduct.fuelType,
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.bold)),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 30.h),
-                  Text(AppStrings.description,
-                      style: GoogleFonts.poppins(
-                          fontSize: 20.sp, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 5.h),
-                  Text(widget.carProduct.description,
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.w500)),
-                  SizedBox(height: 20.h),
-                  Text(AppStrings.bestF,
-                      style: GoogleFonts.poppins(
-                          fontSize: 20.sp, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 20.h),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 40.h,
-                            width: 40.w,
-                            decoration: BoxDecoration(
-                                color: AppColors.generalGrey,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Icon(
-                              Icons.bluetooth,
-                              size: 25.sp,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Text(
-                            AppStrings.blueCon,
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 100.w,
-                          ),
-                          Text(
-                            widget.carProduct.bluetooth ? "Yes" : "No",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        height: 40.h,
-                        endIndent: 1,
-                        thickness: 0.5,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            height: 40.h,
-                            width: 40.w,
-                            decoration: BoxDecoration(
-                                color: AppColors.generalGrey,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Icon(
-                              Icons.coronavirus,
-                              size: 25.sp,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.sp,
-                          ),
-                          Text(
-                            AppStrings.autoMaticCC,
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 70.w,
-                          ),
-                          Text(
-                            widget.carProduct.climate ? "Yes" : "No",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 90.h),
-                ],
-              ),
-            ),
+            ProductScreenBody(car: widget.carProduct),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -284,7 +86,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       GestureDetector(
                         onTap: () {
 
-                          double carPrice = widget.carProduct?.carPrice ?? 0.0;
+                          double carPrice = widget.carProduct.carPrice ?? 0.0;
 
                           showModalBottomSheet(
                             context: context,
@@ -467,17 +269,9 @@ class _ProductScreenState extends State<ProductScreen> {
                                             ),
                                           ),
                                           SizedBox(height: 16.h),
-
                                           RoundButton(
                                             onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) => AddressScreen(carProduct: widget.carProduct,
-                                                    address: AddressScreenModelData.locationList.first,
-                                                  ),
-                                                ),
-                                              );
+                                              Get.toNamed(RouteNames.addressScreen,arguments: AddressScreenModelData.locationList.first);
                                             },
                                             title: AppStrings.confirm,
                                           ),

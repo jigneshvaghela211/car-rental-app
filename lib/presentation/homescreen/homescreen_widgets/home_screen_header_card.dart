@@ -1,5 +1,7 @@
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/component/custom_text.dart';
 import '../../../core/constants/app_size.dart';
@@ -8,7 +10,6 @@ import '../../../core/constants/image_strings.dart';
 import '../../../core/theme/appcolors/app_colors.dart';
 import '../../../models/location_data_model.dart';
 import '../../common.widgets/image.widget.dart';
-import '../searchscreen/search_screen.dart';
 import 'car_filter_tool.dart';
 
 class HomeScreenHeaderCard extends StatefulWidget {
@@ -32,12 +33,8 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
           HomeMenuImage(menu: ImageStrings.menu),
           GestureDetector(
             onTap: () async {
-              final result = await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchScreen(forSearch: LocationDataModel.locationDataProvider[0]),
-                ),
-              );
+              final result = await
+                  Get.toNamed(RouteNames.searchScreen,arguments: LocationDataModel.locationDataProvider[0]);
               if (result is String) {
                 setState(() => widget.selectedLocation = result);
               }
@@ -47,7 +44,8 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
                 Icon(Icons.location_on_outlined, size: 22.sp),
                 Text(
                   widget.selectedLocation,
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold, fontSize: 14.sp),
                 ),
                 Icon(Icons.keyboard_arrow_down_sharp, size: 22.sp),
               ],
@@ -60,10 +58,14 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
         ]),
         SizedBox(height: 20.h),
         Row(children: [
-          CustomText(text: AppStrings.homeHeader, fontSize: AppSize.doubleELFont, fontWeight: FontWeight.bold),
+          CustomText(text: AppStrings.homeHeader,
+              fontSize: AppSize.doubleELFont,
+              fontWeight: FontWeight.bold),
           WaveImage(wave: ImageStrings.waveImage),
         ]),
-        CustomText(text: AppStrings.homeSubtitle, fontSize: AppSize.largeFont, fontWeight: FontWeight.w500),
+        CustomText(text: AppStrings.homeSubtitle,
+            fontSize: AppSize.largeFont,
+            fontWeight: FontWeight.w500),
         SizedBox(height: 20.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,11 +86,12 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
                   Expanded(
                     child: TextFormField(
                       onChanged: (value) {
-                          widget.onSearchChanged(value);
+                        widget.onSearchChanged(value);
                       },
                       decoration: InputDecoration(
                         hintText: AppStrings.search,
-                        hintStyle: GoogleFonts.poppins(color: Colors.grey, fontSize: 14.sp),
+                        hintStyle: GoogleFonts.poppins(
+                            color: Colors.grey, fontSize: 14.sp),
                         border: InputBorder.none,
                       ),
                     ),
@@ -100,7 +103,8 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
-                    color: AppColors.general, borderRadius: BorderRadius.circular(10)),
+                    color: AppColors.general,
+                    borderRadius: BorderRadius.circular(10)),
                 child: ToolImageHome(tool: ImageStrings.toolTwo)),
           ],
         ),
@@ -108,8 +112,12 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomText(text: AppStrings.trendBrand, fontSize: AppSize.extraLargeFont, fontWeight: FontWeight.bold),
-            CustomText(text: AppStrings.viewAll, fontSize: AppSize.mediumFont, fontWeight: FontWeight.w500),
+            CustomText(text: AppStrings.trendBrand,
+                fontSize: AppSize.extraLargeFont,
+                fontWeight: FontWeight.bold),
+            CustomText(text: AppStrings.viewAll,
+                fontSize: AppSize.mediumFont,
+                fontWeight: FontWeight.w500),
           ],
         ),
       ],

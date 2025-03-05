@@ -32,7 +32,7 @@ class ChoiceWidget extends StatelessWidget {
         children: [
           Image.asset(brandImage, height: 80.h),
           SizedBox(height: 5.h),
-          CustomText(text: brandName, fontSize: AppSize.largeFont, fontWeight: FontWeight.w500),
+          CustomText(text: brandName, fontSize: AppSize.largeFont, fontWeight: FontWeight.w400),
         ],
       ),
     );

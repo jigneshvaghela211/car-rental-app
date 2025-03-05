@@ -2,6 +2,7 @@ import 'package:car_rental_task/core/component/custom_app_bar.dart';
 import 'package:car_rental_task/core/constants/app_string.dart';
 import 'package:car_rental_task/core/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theme/appcolors/app_colors.dart';
@@ -50,7 +51,7 @@ class _FilteredCarsScreenState extends State<FilteredCarsScreen> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                   Get.back;
                   },
                   child: Container(
                     padding: EdgeInsets.all(8.r),

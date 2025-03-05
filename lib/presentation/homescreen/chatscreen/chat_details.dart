@@ -1,6 +1,7 @@
 import 'package:car_rental_task/core/constants/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
 import 'package:car_rental_task/data/chat_data_model/chat_model_data.dart';
@@ -40,7 +41,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
         backgroundColor: AppColors.white,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.black, size: 20.sp),
-          onPressed: () => Navigator.pop(context),
+          onPressed: Get.back
         ),
         title: Row(
           children: [

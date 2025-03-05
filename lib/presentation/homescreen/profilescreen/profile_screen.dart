@@ -1,15 +1,14 @@
 import 'dart:io';
 import 'package:car_rental_task/core/component/round_button.dart';
 import 'package:car_rental_task/core/constants/image_strings.dart';
-import 'package:car_rental_task/presentation/homescreen/profilescreen/widgets/edit_profile_screen.dart';
-import 'package:car_rental_task/presentation/homescreen/profilescreen/widgets/profile_card/contract.dart';
 import 'package:car_rental_task/presentation/homescreen/profilescreen/widgets/profile_card/license.dart';
-import 'package:car_rental_task/presentation/homescreen/profilescreen/widgets/profile_card/passport.dart';
 import 'package:car_rental_task/presentation/homescreen/profilescreen/widgets/profile_card/profile_card.dart';
 import 'package:car_rental_task/presentation/homescreen/profilescreen/widgets/profile_item.dart';
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/component/custom_app_bar.dart';
 import '../../../core/constants/app_string.dart';
@@ -62,12 +61,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height: 20.h),
                 RoundButton(
                   onPressed: () async {
-                    final updatedData = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EditProfileScreen(
-                              name: userName, image: userImage)),
-                    );
+                    final updatedData = await
+                    Get.toNamed(RouteNames.editProfileScreen,arguments: [userName,userImage]);
                     if (updatedData != null) {
                       setState(() {
                         userName = updatedData["name"];
@@ -83,8 +78,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => License()));
+                       Get.back; License;
                       },
                       child: ProfileCard(
                           icon: FontAwesomeIcons.idCard,
@@ -92,10 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Passport()));
+                        Get.toNamed(RouteNames.passport);
                       },
                       child: ProfileCard(
                           icon: FontAwesomeIcons.passport,
@@ -103,10 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Contract()));
+                        Get.toNamed(RouteNames.contract);
                       },
                       child: ProfileCard(
                           icon: FontAwesomeIcons.fileContract,

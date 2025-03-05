@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/constants/app_size.dart';
-
 class LargeText extends StatelessWidget {
   final String text;
   const LargeText({super.key, required this.text,});

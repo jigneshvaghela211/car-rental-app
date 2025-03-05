@@ -6,11 +6,12 @@ import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
 import 'package:car_rental_task/presentation/screens/auth/login/widgets/button.widgets/facebook.button.dart';
 import 'package:car_rental_task/presentation/screens/auth/login/widgets/button.widgets/google.button.dart';
 import 'package:car_rental_task/presentation/screens/auth/login/widgets/customtextfields/custom_text_fields.dart';
-import 'package:car_rental_task/presentation/screens/auth/signup/signup_screen.dart';
-import 'package:car_rental_task/presentation/screens/on_boarding/ineterest/interest_screen.dart';
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../../core/component/round_button.dart';
+import '../ineterest/interest_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -82,10 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   title: AppStrings.login,
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => InterestScreen()),
+                      Get.to(() => InterestScreen(),
                       );
                     }
                   },
@@ -125,7 +123,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         text: AppStrings.bottomText,
                         fontSize: AppSize.mediumFont,
                         fontWeight: FontWeight.w400),
-                    GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupScreen()));},
+                    GestureDetector(onTap: (){
+                    Get.toNamed(RouteNames.signUpScreen);
+                    },
                       child: CustomText(color: AppColors.general,
                           text: AppStrings.bottomRich,
                           fontSize: AppSize.mediumFont,

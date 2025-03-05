@@ -1,12 +1,13 @@
 import 'package:car_rental_task/core/component/custom_text.dart';
-import 'package:car_rental_task/presentation/screens/auth/login/login_screen.dart';
-import 'package:car_rental_task/presentation/screens/on_boarding/ineterest/interest_screen.dart';
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../../core/constants/app_size.dart';
 import '../../../../core/constants/app_string.dart';
 import '../../../../core/constants/image_strings.dart';
 import '../../../../core/theme/appcolors/app_colors.dart';
+import '../ineterest/interest_screen.dart';
 import '../login/widgets/button.widgets/facebook.button.dart';
 import '../login/widgets/button.widgets/google.button.dart';
 import '../../../../core/component/round_button.dart';
@@ -83,9 +84,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 RoundButton(title: AppStrings.signUp,
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => InterestScreen()),
+                     Get.to(() => InterestScreen(),
                       );
                     }
                   },
@@ -124,7 +123,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     children: [
                       CustomText(text: AppStrings.bottomAc, fontSize: AppSize.mediumFont, fontWeight: FontWeight.w400),
                       GestureDetector(onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+                        Get.toNamed(RouteNames.loginScreen);
                       },
                           child: CustomText(text: AppStrings.login, fontSize: AppSize.mediumFont, fontWeight: FontWeight.w400,color: AppColors.general,)),
                     ],

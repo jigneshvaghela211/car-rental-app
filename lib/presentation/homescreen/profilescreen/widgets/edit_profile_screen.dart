@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:car_rental_task/core/component/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/appcolors/app_colors.dart';
 import 'package:car_rental_task/core/component/round_button.dart';
@@ -91,16 +91,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             SizedBox(height: 20.h),
             RoundButton(
               onPressed: () {
-                Navigator.pop(context, {
+                Get.back(result: {
                   "name": _nameController.text,
-                  "imagePath": image?.path ?? widget.image,
-                });
-                setState(() {
-
+                  "imagePath": image?.path ?? widget.image
                 });
               },
               title: "Save",
             ),
+
 
           ],
         ),

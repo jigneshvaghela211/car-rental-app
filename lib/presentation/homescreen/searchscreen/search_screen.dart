@@ -5,6 +5,7 @@ import 'package:car_rental_task/core/constants/app_size.dart';
 import 'package:car_rental_task/core/constants/app_string.dart';
 import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../models/location_data_model.dart';
 import 'widget/location_item.dart';
 import 'widget/search_item_container.dart';
@@ -88,7 +89,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           subtitle: location.locationDetails,
                           distance: "${location.locationDistance} KM",
                           onTap: () {
-                            Navigator.pop(context, location.location);
+                            Get.to; location.location;
                           },
                         );
                       },

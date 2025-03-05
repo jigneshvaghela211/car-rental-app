@@ -1,8 +1,8 @@
-import 'package:car_rental_task/data/car_data_manager/car_data_manager.dart';
-import 'package:car_rental_task/presentation/homescreen/home_screen.dart';
 import 'package:car_rental_task/presentation/screens/splashscreen/splash_screen.dart';
+import 'package:car_rental_task/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,13 +18,14 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.lime.shade400),
             useMaterial3: true,
           ),
           home: child,
+          getPages: Routes.pages,
           debugShowCheckedModeBanner: false,
         );
       },

@@ -1,6 +1,7 @@
 import 'package:car_rental_task/core/component/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:car_rental_task/core/constants/app_string.dart';
 import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
@@ -40,13 +41,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChatDetailScreen(
+                      Get.to(() => ChatDetailScreen(
                             chatData: ChatModelData.chatDataList[index],
                           ),
-                        ),
                       );
                     },
                     child: Padding(

@@ -6,9 +6,10 @@ import 'package:car_rental_task/data/car_data_manager/car_data_manager.dart';
 import 'package:car_rental_task/models/car_model_data.dart';
 import 'package:car_rental_task/presentation/homescreen/home_screen.dart';
 import 'package:car_rental_task/core/component/round_button.dart';
+import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 import 'choice_widget.dart';
 
 class InterestScreen extends StatefulWidget {
@@ -34,12 +35,7 @@ class _InterestScreenState extends State<InterestScreen> {
               alignment: Alignment.topRight,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => HomeScreen(
-                                filteredCars: CarDataManager.cars,
-                              )));
+                 Get.to(() => HomeScreen(filteredCars: CarDataManager.cars));
                 },
                 child: Container(
                   height: 45.h,
@@ -72,7 +68,7 @@ class _InterestScreenState extends State<InterestScreen> {
                   CustomText(color: Colors.grey,
                       text: AppStrings.headerSubtitle,
                       fontSize: AppSize.mediumFont,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w400),
                   GridView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -113,12 +109,7 @@ class _InterestScreenState extends State<InterestScreen> {
             child: RoundButton(
               title: AppStrings.bottomButtonText,
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => HomeScreen(
-                              filteredCars: CarDataManager.cars,
-                            )));
+                Get.toNamed(RouteNames.homeScreen,arguments: CarDataManager.cars);
               },
             ),
           ),

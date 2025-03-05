@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/constants/app_size.dart';
+import 'package:get/get.dart';
 import '../homescreen/profilescreen/profile_screen.dart';
 
 class WaveImage extends StatelessWidget{
@@ -26,7 +26,7 @@ class HomeScreenProfile extends StatelessWidget{
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+        Get.to(() => ProfileScreen());
       },
       child: Image.asset(
         profile,
