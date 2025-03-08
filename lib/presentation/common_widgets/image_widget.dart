@@ -1,3 +1,4 @@
+import 'package:car_rental_task/core/utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -50,7 +51,7 @@ class HomeMenuImage extends StatelessWidget{
         height: 40.h,
         width: 45.w,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Helper.isDarkMode(context)? Colors.black : Colors.white,
           borderRadius: BorderRadius.circular(5.r),
           boxShadow: [
             BoxShadow(

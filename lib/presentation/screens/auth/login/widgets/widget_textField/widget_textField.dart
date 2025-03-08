@@ -1,3 +1,4 @@
+import 'package:car_rental_task/core/utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +28,7 @@ class _CustomTextFieldsState extends State<CustomTextFields> {
           child: TextFormField(
             controller: widget.emailController,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(filled: true,fillColor: AppColors.generalGrey,
+            decoration: InputDecoration(filled: true,fillColor: Helper.isDarkMode(context)? Colors.black : AppColors.generalGrey,
               hintText: AppStrings.hintText,
               hintStyle: GoogleFonts.poppins(color: AppColors.subTitle),
               border: OutlineInputBorder(
@@ -51,7 +52,7 @@ class _CustomTextFieldsState extends State<CustomTextFields> {
             controller: widget.passwordController,
             keyboardType: TextInputType.number,
             obscureText: _isObscurePassword,
-            decoration: InputDecoration(fillColor: AppColors.generalGrey,filled: true,
+            decoration: InputDecoration(fillColor: Helper.isDarkMode(context)? Colors.black : AppColors.generalGrey,filled: true,
               hintText: AppStrings.hintPassword,
               hintStyle: GoogleFonts.poppins(color: AppColors.subTitle),
               border: OutlineInputBorder(

@@ -1,23 +1,28 @@
+import 'package:car_rental_task/core/component/custom_text.dart';
+import 'package:car_rental_task/core/constants/app_size.dart';
+import 'package:car_rental_task/core/constants/app_string.dart';
+import 'package:car_rental_task/core/constants/image_strings.dart';
+import 'package:car_rental_task/core/theme/appcolors/app_colors.dart';
+import 'package:car_rental_task/models/location_data_model.dart';
+import 'package:car_rental_task/presentation/common.widgets/image.widget.dart';
 import 'package:car_rental_task/route/route.names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/component/custom_text.dart';
-import '../../../core/constants/app_size.dart';
-import '../../../core/constants/app_string.dart';
-import '../../../core/constants/image_strings.dart';
-import '../../../core/theme/appcolors/app_colors.dart';
-import '../../../models/location_data_model.dart';
-import '../../common.widgets/image.widget.dart';
 import 'car_filter_tool.dart';
 
 class HomeScreenHeaderCard extends StatefulWidget {
   String selectedLocation;
   String searchName;
- final Function(String) onSearchChanged;
+  final Function(String) onSearchChanged;
 
-  HomeScreenHeaderCard({super.key, required this.selectedLocation, required this.searchName, required this.onSearchChanged,});
+  HomeScreenHeaderCard({
+    super.key,
+    required this.selectedLocation,
+    required this.searchName,
+    required this.onSearchChanged,
+  });
 
   @override
   State<HomeScreenHeaderCard> createState() => _HomeScreenHeaderCardState();
@@ -33,8 +38,8 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
           HomeMenuImage(menu: ImageStrings.menu),
           GestureDetector(
             onTap: () async {
-              final result = await
-                  Get.toNamed(RouteNames.searchScreen,arguments: LocationDataModel.locationDataProvider[0]);
+              final result = await Get.toNamed(RouteNames.searchScreen,
+                  arguments: LocationDataModel.locationDataProvider[0]);
               if (result is String) {
                 setState(() => widget.selectedLocation = result);
               }
@@ -58,12 +63,14 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
         ]),
         SizedBox(height: 20.h),
         Row(children: [
-          CustomText(text: AppStrings.homeHeader,
+          CustomText(
+              text: AppStrings.homeHeader,
               fontSize: AppSize.doubleELFont,
               fontWeight: FontWeight.bold),
           WaveImage(wave: ImageStrings.waveImage),
         ]),
-        CustomText(text: AppStrings.homeSubtitle,
+        CustomText(
+            text: AppStrings.homeSubtitle,
             fontSize: AppSize.largeFont,
             fontWeight: FontWeight.w500),
         SizedBox(height: 20.h),
@@ -112,10 +119,12 @@ class _HomeScreenHeaderCardState extends State<HomeScreenHeaderCard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomText(text: AppStrings.trendBrand,
+            CustomText(
+                text: AppStrings.trendBrand,
                 fontSize: AppSize.extraLargeFont,
                 fontWeight: FontWeight.bold),
-            CustomText(text: AppStrings.viewAll,
+            CustomText(
+                text: AppStrings.viewAll,
                 fontSize: AppSize.mediumFont,
                 fontWeight: FontWeight.w500),
           ],
